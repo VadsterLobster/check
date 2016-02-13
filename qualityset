@@ -1,0 +1,21 @@
+using UnityEngine;
+using System.Collections;
+
+public class Quality_set : MonoBehaviour
+{
+
+	// Use this for initialization
+	void Start () {
+        int dis = 33;
+        if (PlayerPrefs.HasKey("GraphDropQuality"))
+            dis = 33 + PlayerPrefs.GetInt("GraphDropQuality") * 5;
+        if (GetComponent<Camera>())
+            GetComponent<Camera>().farClipPlane = dis;
+     //   PlayerPrefs.SetInt("GraphDropQuality", 6//);
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+}
