@@ -1,0 +1,57 @@
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+public class NameOfThePlayerOutPut_ingame : MonoBehaviour {
+
+    [SerializeField]
+    Text outputText;
+    [SerializeField]
+    Boot_throw inputScript;
+
+
+    bool finded = false;
+
+    void Start()
+    {
+        if (!(bool)PhotonNetwork.player.customProperties["dead"]) Find();
+      //  else finded = true;
+
+    }
+    void Find()
+    {
+
+        StartCoroutine(FindPLayer());
+
+    }
+    IEnumerator FindPLayer()
+    {
+        Transform container = GameObject.Find("Players").transform;
+        while (inputScript == null)
+        {
+            for (int i = 0; i < container.childCount; i++)
+            {
+                if (container.GetChild(i).tag == "Player")
+                {
+                    inputScript = container.GetChild(i).GetComponent<Boot_throw>();
+                    break;
+                }
+                yield return null;
+            }
+            yield return null;
+        }
+        finded = true;
+    }
+
+    void Update ()
+{
+        if (finded)
+            outputText.text = inputScript.plr_name;
+        else
+            outputText.text = "";
+    }
+}
+
+
+
+
