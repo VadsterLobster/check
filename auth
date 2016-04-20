@@ -1,0 +1,5 @@
+{ ResultCode: 1, Message: "optional Auth OK message" }
+
+{ ResultCode: 2, Message: "optional Auth Failed message" }
+
+{ ResultCode: 3, Message: "optional Parameter invalid message" }
